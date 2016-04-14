@@ -4,66 +4,50 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>用户注册</title>
-<script type="text/javascript" src="./js/jquery.js"></script>
-<script type="text/javascript" src="./js/jquery.validate.min.js"></script> 
+<title>用户登录</title>
+<script type="text/javascript" src="./js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="./js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="./js/messages_zh.js"></script>
+<link rel="stylesheet" href="./css/screen.css">
 <script type="text/javascript" >
-	
-	function validate() {
-		var errorMsg = "";
-		var loginName = document.getElementById("username");
-		var password = document.getElementById("password");
-		if(!loginName.value){
-			errorMsg += "用户名不能为空!";
-		}
-		if(!password.value){
-			errorMsg += "密码不能为空!";
-		}
-
-		if(errorMsg != ""){
-			$("#result").html(errorMsg);
-			$("#result").show();
-		}
-		else{
-			$("#result").show();
-			$("#result").html("正在注册中...");
-			//登录处理
-			loginUtil();
-		}
-	}	
-	function loginUtil()
-	{
-		 $.ajax({  
-				data:"name="+$("#username").val()+"&pwd=" + $('#password').val(),  
-		        type:"GET",  	        
-		        url:"user/add",  
-		        dataType: 'json',
-		        error:function(data){  
-		            alert("出错了！！:"+data.msg);  
-		        },  
-		        success:function(data){  
-		            alert(data.msg);  
-		            $("#result").html(data.msg) ;  
-		        }  
-		        });    
+$.validator.setDefaults({
+	submitHandler: function(form) {
+		form.submit();
 	}
+});
+
+$().ready(function() {
+	// validate the comment form when it is submitted
+	$("#signupForm").validate();
+});
 </script> 
 <style type="text/css">
-
-#usernameinfo  {color: red}
-#passwordinfo  {color: red}
+	#signupForm {
+		width: 300px;
+	}
+	#signupForm label.error {
+		margin-left: 10px;
+		width: auto;
+		display: inline;
+	}
 </style>
 </head>
 <body>
-		<span>账号:</span>
-		<input type="text" id="username" name="username"	placeholder="用户名" />
-			&nbsp<span id="usernameinfo">*</span><br>
-		<br> <span>密码:</span>
-		<input type="password" id="password"	name="password" placeholder="密码" />
-		&nbsp<span  id="passwordinfo">*</span><br><br>
-		<input  type="submit"  onclick="validate();"	value="注册" /><br><br>
-		 <div id="result"></div>
+	<form class="cmxform" id="signupForm" method="post" action="user/add">
+		<fieldset>
+			<legend>请输入你的用户名和密码</legend>
+			<p>
+				<label for="cusername">用户名</label>
+				<input id="cusername" name="username" minlength="2" type="text" required>
+			</p>
+			<p>
+				<label for="cpassword">密码</label>
+				<input id="cpassword" type="password" minlength="6" name="password" required>
+			</p>
+				<input class="submit" type="submit" value="注册">
+			</p>
+		</fieldset>
+	</form>
 </body>
 
 </html>

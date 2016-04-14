@@ -5,14 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>用户注册</title>
-<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="./js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="./js/messages_zh.js"></script>
 <link rel="stylesheet" href="./css/screen.css">
 <script type="text/javascript" >
 $.validator.setDefaults({
-	submitHandler: function() {
-		alert("submitted!");
+	submitHandler: function(form) {
+		form.submit();
 	}
 });
 
@@ -23,7 +23,7 @@ $().ready(function() {
 </script> 
 <style type="text/css">
 	#signupForm {
-		width: 670px;
+		width: 300px;
 	}
 	#signupForm label.error {
 		margin-left: 10px;
@@ -37,12 +37,12 @@ $().ready(function() {
 		<fieldset>
 			<legend>请输入你的用户名和密码</legend>
 			<p>
-				<label for="cusername">用户名 (必填, 至少2个字符)</label>
+				<label for="cusername">用户名</label>
 				<input id="cusername" name="username" minlength="2" type="text" required>
 			</p>
 			<p>
-				<label for="cpassword">密码 (必填, 至少6个字符)</label>
-				<input id="cpassword" type="password" minlength="2" name="password" required>
+				<label for="cpassword">密码</label>
+				<input id="cpassword" type="password" minlength="6" name="password" required>
 			</p>
 				<input class="submit" type="submit" value="注册">
 			</p>
