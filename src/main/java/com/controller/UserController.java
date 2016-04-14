@@ -38,4 +38,11 @@ public class UserController {
 		}
 		return map;
 	}
+
+	@RequestMapping("/register")
+	public String toRegisterUsers()
+	{
+		return "redirect:/register.jsp";
+	}
+	
 }

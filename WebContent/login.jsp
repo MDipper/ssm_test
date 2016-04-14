@@ -25,7 +25,7 @@
 		}
 		else{
 			$("#result").show();
-			$("#result").html("正在注册中...");
+			$("#result").html("正在登录中...");
 			//登录处理
 			loginUtil();
 		}
@@ -34,8 +34,8 @@
 	{
 		 $.ajax({  
 				data:"name="+$("#username").val()+"&pwd=" + $('#password').val(),  
-		        type:"GET",  	        
-		        url:"user/add",  
+		        type:"POST",  	        
+		        url:"user/login",  
 		        dataType: 'json',
 		        error:function(data){  
 		            alert("出错了！！:"+data.msg);  
@@ -46,6 +46,7 @@
 		        }  
 		        });    
 	}
+
 </script> 
 <style type="text/css">
 
@@ -60,7 +61,9 @@
 		<br> <span>密码:</span>
 		<input type="password" id="password"	name="password" placeholder="密码" />
 		&nbsp<span  id="passwordinfo">*</span><br><br>
-		<input  type="submit"  onclick="validate();"	value="注册" /><br><br>
+		<input  type="submit"  onclick="validate();"	value="登录" />&nbsp&nbsp
+		<a href="user/register" >注册</a>	
+		<br><br>
 		 <div id="result"></div>
 </body>
 

@@ -34,7 +34,7 @@
 	{
 		 $.ajax({  
 				data:"name="+$("#username").val()+"&pwd=" + $('#password').val(),  
-		        type:"GET",  	        
+		        type:"POST",  	        
 		        url:"user/add",  
 		        dataType: 'json',
 		        error:function(data){  
