@@ -7,6 +7,7 @@
 <title>用户注册</title>
 <script type="text/javascript" src="./js/jquery.js"></script>
 <script type="text/javascript" src="./js/jquery.validate.min.js"></script> 
+<script type="text/javascript" src="./js/messages_zh.js"></script>
 <script type="text/javascript" >
 	
 	function validate() {
