@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.User;
 import com.service.UserService;
@@ -22,7 +23,7 @@ public class UserController {
 	private UserService userService;
 
 	@RequestMapping(value="/add")
-	public Map<String,Object> addUser(HttpServletRequest request,HttpServletResponse response) throws IOException{
+	public @ResponseBody Map<String,Object> addUser(HttpServletRequest request,HttpServletResponse response) throws IOException{
 		 String username_= request.getParameter("name").trim();
 		 String password_ = request.getParameter("pwd").trim();
 		 System.out.println(username_);
