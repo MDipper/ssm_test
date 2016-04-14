@@ -5,7 +5,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>用户注册</title>
-<script type="text/javascript" src="./js/jquery-2.1.3.js"></script>  
+<script type="text/javascript" src="./js/jquery.js"></script>
+<script type="text/javascript" src="./js/jquery.validate.js"></script>
+<script type="text/javascript" src="./js/messages_zh.js"></script>
 <script type="text/javascript" >
 	
 	function validate() {
