@@ -18,7 +18,7 @@
 	<!--
 		配置静态资源，直接映射到对应的文件夹，不被DispatcherServlet处理，3.04新增功能，需要重新设置spring-mvc-3.0.xsd
 	-->
-	<mvc:resources mapping="/img/**" location="/img/" />
+	<mvc:resources mapping="/images/**" location="/images/" />
 	<mvc:resources mapping="/js/**" location="/js/" />
 	<mvc:resources mapping="/css/**" location="/css/" />
 	<mvc:resources mapping="/html/**" location="/html/" />
@@ -29,7 +29,7 @@
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<!-- 这里的配置我的理解是自动给后面action的方法return的字符串加上前缀和后缀，变成一个 可用的url地址 -->
-		<property name="prefix" value="/WEB-INF/jsp/" />
+		<property name="prefix" value="/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
-</beans>
+</beans>	

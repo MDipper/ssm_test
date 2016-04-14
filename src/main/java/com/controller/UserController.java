@@ -26,8 +26,8 @@ public class UserController {
 	public @ResponseBody Map<String, Object> addUser(
 			HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
-		String username_ = request.getParameter("name").trim();
-		String password_ = request.getParameter("pwd").trim();
+		String username_ = request.getParameter("username");
+		String password_ = request.getParameter("password");
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (userService.CheckUserByUsername(username_) == 0) {
 			User user = new User(username_, password_);
@@ -38,11 +38,11 @@ public class UserController {
 		}
 		return map;
 	}
-
-	@RequestMapping("/register")
-	public String toRegisterUsers()
+	@RequestMapping(value = "/register")
+	public String toregister()
 	{
-		return "redirect:/register.jsp";
+		return "success";
 	}
+
 	
 }
