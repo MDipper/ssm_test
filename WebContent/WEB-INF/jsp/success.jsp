@@ -7,6 +7,6 @@
 <title>success</title>
 </head>
 <body>
-add user success
+login success
 </body>
 </html>

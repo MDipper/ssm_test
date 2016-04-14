@@ -6,7 +6,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>用户注册</title>
 <script type="text/javascript" src="./js/jquery-2.1.3.js"></script>  
-<!-- <script type="text/javascript" src="./js/jquery-2.1.3.min.js"></script>   -->
 <script type="text/javascript" >
 	
 	function validate() {
@@ -14,10 +13,10 @@
 		var loginName = document.getElementById("username");
 		var password = document.getElementById("password");
 		if(!loginName.value){
-			errorMsg += "&nbsp;&nbsp;用户名不能为空!";
+			errorMsg += "用户名不能为空!";
 		}
 		if(!password.value){
-			errorMsg += "&nbsp;&nbsp;密码不能为空!";
+			errorMsg += "密码不能为空!";
 		}
 
 		if(errorMsg != ""){
@@ -26,7 +25,7 @@
 		}
 		else{
 			$("#result").show();
-			$("#result").html("&nbsp;&nbsp;正在注册中...");
+			$("#result").html("正在注册中...");
 			//登录处理
 			loginUtil();
 		}
@@ -42,7 +41,7 @@
 		            alert("出错了！！:"+data.msg);  
 		        },  
 		        success:function(data){  
-		            alert("success:"+data.msg);  
+		            alert(data.msg);  
 		            $("#result").html(data.msg) ;  
 		        }  
 		        });    
@@ -52,8 +51,6 @@
 
 #usernameinfo  {color: red}
 #passwordinfo  {color: red}
-
-
 </style>
 </head>
 <body>
