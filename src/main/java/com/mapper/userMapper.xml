@@ -15,5 +15,7 @@
 	<insert id="addUser"   parameterType="User">
 		insert into user(username, password) values(#{username}, #{password})
 	</insert>
-	
+	<select id="checkUsernamePassword" resultType="int" parameterType="User">
+		select count(1) from user WHERE username=#{username} AND password=#{password}
+	</select>
 </mapper>

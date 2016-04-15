@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.mapper.UserMapper;
 import com.model.User;
 import com.service.UserService;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 
 @SuppressWarnings("restriction")
 @Service
@@ -28,6 +29,10 @@ public class UserServiceImpl implements UserService {
 	public int checkUserByUsername(String username) {
 		// TODO Auto-generated method stub
 		return userMapper.checkUserByUsername(username);
+	}
+	public int checkUsernamePassword(User user)
+	{
+		return userMapper.checkUsernamePassword(user);
 	}
 
 }

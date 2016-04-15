@@ -8,4 +8,5 @@ public interface UserService {
 	
 	int addUser(User user);
 	int checkUserByUsername(String username);
+	int checkUsernamePassword(User user);
 }

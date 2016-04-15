@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>用户注册</title>
+<title>用户登录</title>
 <script type="text/javascript" src="./js/jquery-1.11.1.js"></script>
 <script type="text/javascript" src="./js/jquery.validate.min.js"></script>
 <script type="text/javascript" src="./js/messages_zh.js"></script>
@@ -14,7 +14,7 @@ $.validator.setDefaults({
 	submitHandler: function() {
 		$.post(
 				// 接收数据的页面
-				'user/register',
+				'user/login',
 				// 传给后台的数据，多个参数用&连接或者使用json格式数据：{a:'value1',b:'value2'}
 				{
 					username: $("#username").val(),
@@ -30,7 +30,7 @@ $.validator.setDefaults({
 				// 默认返回字符串，设置值等于json则返回json数据
 				'json'
 		).error(function(){
-			alert("注册失败，请稍后再试。");
+			alert("登录失败，请稍后再试。");
 		});
 	}
 });
@@ -43,7 +43,7 @@ $().ready(function() {
 		        required: true,
 		        minlength: 2,
 		        remote: {
-				    url: "user/check_user",     //后台处理程序
+				    url: "user/logincheck_user",     //后台处理程序
 				    type: "get",                //数据发送方式
 				    dataType: "json",           //接受数据格式   
 				    data: {                     //要传递的数据
@@ -54,6 +54,7 @@ $().ready(function() {
 				            return $("#password").val();
 				        }
 				    }
+		
 				}
 		      },
 		      password: {
@@ -96,7 +97,7 @@ $().ready(function() {
 </style>
 </head>
 <body>
-	<form class="cmxform" id="signupForm" method="post" action="user/register">
+	<form class="cmxform" id="signupForm" method="post" action="user/login">
 		<fieldset>
 			<legend>请输入你的用户名和密码</legend>
 			<p>
@@ -113,7 +114,7 @@ $().ready(function() {
 			</p>
 			<p>
 				<input class="reset" type="reset" value="重置">
-				<input class="submit" type="submit" value="注册">
+				<input class="submit" type="submit" value="登录">
 			</p>
 		</fieldset>
 	</form>

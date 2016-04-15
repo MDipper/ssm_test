@@ -1,6 +1,5 @@
 package com.controller;
 
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,13 +23,13 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	private static Logger logger = Logger.getLogger(UserController.class);  
 
-	@RequestMapping(value = "/register", method=RequestMethod.POST)
+	private static Logger logger = Logger.getLogger(UserController.class);
+
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
 	public @ResponseBody Map<String, Object> addUser(
-			@RequestParam(value="username") String username,
-			@RequestParam(value="password") String password) {
+			@RequestParam(value = "username") String username,
+			@RequestParam(value = "password") String password) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (userService.checkUserByUsername(username) == 0) {
 			User user = new User(username, password);
@@ -45,15 +44,41 @@ public class UserController {
 		}
 		return map;
 	}
-	
+
 	@RequestMapping(value = "/check_user")
 	public @ResponseBody String checkUserAvailable(
-			@RequestParam(value="username") String username) {
+			@RequestParam(value = "username") String username) {
 		if (userService.checkUserByUsername(username) == 0) {
 			return String.valueOf(true);
 		} else {
 			return String.valueOf(false);
 		}
 	}
-	
+
+	@RequestMapping(value = "/login" ,method=RequestMethod.POST)
+	public @ResponseBody Map<String, Object> login(
+			@RequestParam(value = "username") String username,
+			@RequestParam(value = "password") String password) {
+		Map<String, Object> map = new HashMap<String, Object>();
+		User user = new User(username, password);
+		if(userService.checkUsernamePassword(user)!=0)
+		{
+			map.put("code", "200");
+			map.put("msg", "登录成功！");
+		}
+		else  {
+			map.put("code", "400");
+			map.put("msg", "您输入的帐号或密码有误");
+		}
+		return map;
+	}
+	@RequestMapping(value = "/logincheck_user")
+	public @ResponseBody String logincheckUserAvailable(
+			@RequestParam(value = "username") String username) {
+		if (userService.checkUserByUsername(username) != 0) {
+			return String.valueOf(true);
+		} else {
+			return String.valueOf(false);
+		}
+	}
 }
