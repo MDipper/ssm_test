@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<%@ include file="/commons/tag_libs.jsp"%>
+<%@ taglib uri="http://github.com/bajdcc" prefix="cc"%> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>用户登录</title>
-<script type="text/javascript" src="${ctx}/js/jquery-1.11.1.js"></script>
-<script type="text/javascript" src="${ctx}/js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="${ctx}/js/messages_zh.js"></script>
-<link rel="stylesheet" href="${ctx}/css/screen.css">
+<cc:script url="~/js/jquery-1.11.1.js" />
+<cc:script url="~/js/jquery.validate.min.js" />
+<cc:script url="~/js/messages_zh.js" />
+<cc:css url="~/css/screen.css" />
 <script type="text/javascript" >
 $.validator.setDefaults({
 	submitHandler: function() {

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee web-jsptaglibrary_2_0.xsd"
+	version="2.0">
+
+	<description>JSTL 1.1 extend library</description>
+	<display-name>bajdcc tag library</display-name>
+	<tlib-version>1.0</tlib-version>
+	<short-name>cctag</short-name>
+	<uri>http://github.com/bajdcc</uri>
+
+	<!-- Script tag -->
+	<tag>
+		<description>
+			添加相对于项目根路径的Script标签。使用方法："~/js/demo.js".
+		</description>
+		<name>script</name>
+		<tag-class>com.taglibs.ScriptTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>
+				相对路径。使用方法："~/js/demo.js".
+			</description>
+			<name>url</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
+		<description>
+			添加相对于项目根路径的Css/Link标签。使用方法："~/css/demo.css".
+		</description>
+		<name>css</name>
+		<tag-class>com.taglibs.CssTag</tag-class>
+		<body-content>empty</body-content>
+		<attribute>
+			<description>
+				相对路径。使用方法："~/css/demo.css".
+			</description>
+			<name>url</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+</taglib>
