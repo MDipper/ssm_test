@@ -60,9 +60,11 @@ public class UserController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user = new User(username, password);
 		if (userService.checkUsernamePassword(user) != 0) {
+			logger.debug(String.format("login success: name=%s password=%s", username, password));
 			map.put("code", "200");
 			map.put("msg", "登录成功！");
 		} else {
+			logger.warn(String.format("wrong login: name=%s password=%s", username, password));
 			map.put("code", "400");
 			map.put("msg", "您输入的帐号或密码有误");
 		}
