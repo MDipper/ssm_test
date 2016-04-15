@@ -1,20 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<%@ include file="/commons/tag_libs.jsp"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>用户登录</title>
-<script type="text/javascript" src="/ssm/js/jquery-1.11.1.js"></script>
-<script type="text/javascript" src="/ssm/js/jquery.validate.min.js"></script>
-<script type="text/javascript" src="/ssm/js/messages_zh.js"></script>
-<link rel="stylesheet" href="/ssm/css/screen.css">
+<title>用户注册</title>
+<script type="text/javascript" src="${ctx}/js/jquery-1.11.1.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/messages_zh.js"></script>
+<link rel="stylesheet" href="${ctx}/css/screen.css">
 <script type="text/javascript" >
 $.validator.setDefaults({
 	submitHandler: function() {
 		$.post(
 				// 接收数据的页面
-				'user/login',
+				'user/register',
 				// 传给后台的数据，多个参数用&连接或者使用json格式数据：{a:'value1',b:'value2'}
 				{
 					username: $("#username").val(),
@@ -30,7 +31,7 @@ $.validator.setDefaults({
 				// 默认返回字符串，设置值等于json则返回json数据
 				'json'
 		).error(function(){
-			alert("登录失败，请稍后再试。");
+			alert("注册失败，请稍后再试。");
 		});
 	}
 });
@@ -41,12 +42,30 @@ $().ready(function() {
 		rules: {
 		      username: {
 		        required: true,
-		        minlength: 2,		        
+		        minlength: 2,
+		        remote: {
+				    url: "user/check_user",     //后台处理程序
+				    type: "get",                //数据发送方式
+				    dataType: "json",           //接受数据格式   
+				    data: {                     //要传递的数据
+				        username: function() {
+				            return $("#username").val();
+				        },
+					    password: function() {
+				            return $("#password").val();
+				        }
+				    }
+				}
 		      },
 		      password: {
 		        required: true,
 		        minlength: 6
-		      }      
+		      },
+		      confirm_password: {
+		        required: true,
+		        minlength: 6,
+		        equalTo: "#password"
+		      }		      
 		    },
 		    messages: {
 		      username: {
@@ -56,6 +75,11 @@ $().ready(function() {
 		      password: {
 		        required: "请输入密码",
 		        minlength: "密码长度不能小于 6 个字母"
+		      },
+		      confirm_password: {
+		        required: "请输入密码",
+		        minlength: "密码长度不能小于 6 个字母",
+		        equalTo: "两次密码输入不一致"
 		      }
 		    }		
 	});
@@ -73,7 +97,7 @@ $().ready(function() {
 </style>
 </head>
 <body>
-	<form class="cmxform" id="signupForm" method="post" action="user/login">
+	<form class="cmxform" id="signupForm" method="post" action="user/register">
 		<fieldset>
 			<legend>请输入你的用户名和密码</legend>
 			<p>
@@ -85,8 +109,12 @@ $().ready(function() {
 				<input id="password" name="password" type="password">
 			</p>
 			<p>
+				<label for="cconfirm_password">确认密码</label>
+				<input id="confirm_password" name="confirm_password" type="password">
+			</p>
+			<p>
 				<input class="reset" type="reset" value="重置">
-				<input class="submit" type="submit" value="登录">
+				<input class="submit" type="submit" value="注册">
 			</p>
 		</fieldset>
 	</form>

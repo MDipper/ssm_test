@@ -58,6 +58,6 @@
 	</filter-mapping>
 
 	<welcome-file-list>
-		<welcome-file>/WEB-INF/jsp/register.jsp</welcome-file>
+		<welcome-file>/jsp/register.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
