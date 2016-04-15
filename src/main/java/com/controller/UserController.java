@@ -28,8 +28,7 @@ public class UserController {
 	private static Logger logger = Logger.getLogger(UserController.class);
 
 	@RequestMapping(value = "/register", method = RequestMethod.POST)
-	public @ResponseBody Map<String, Object> addUser(
-			@RequestParam(value = "username") String username,
+	public @ResponseBody Map<String, Object> addUser(@RequestParam(value = "username") String username,
 			@RequestParam(value = "password") String password) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		if (userService.checkUserByUsername(username) == 0) {
@@ -47,8 +46,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/check_user")
-	public @ResponseBody String checkUserAvailable(
-			@RequestParam(value = "username") String username) {
+	public @ResponseBody String checkUserAvailable(@RequestParam(value = "username") String username) {
 		if (userService.checkUserByUsername(username) == 0) {
 			return String.valueOf(true);
 		} else {
@@ -56,36 +54,24 @@ public class UserController {
 		}
 	}
 
-	@RequestMapping(value = "/login" ,method=RequestMethod.POST)
-	public @ResponseBody Map<String, Object> login(
-			@RequestParam(value = "username") String username,
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
+	public @ResponseBody Map<String, Object> login(@RequestParam(value = "username") String username,
 			@RequestParam(value = "password") String password) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		User user = new User(username, password);
-		if(userService.checkUsernamePassword(user)!=0)
-		{
+		if (userService.checkUsernamePassword(user) != 0) {
 			map.put("code", "200");
 			map.put("msg", "登录成功！");
-		}
-		else  {
+		} else {
 			map.put("code", "400");
 			map.put("msg", "您输入的帐号或密码有误");
 		}
 		return map;
 	}
-	@RequestMapping(value = "/logincheck_user")
-	public @ResponseBody String logincheckUserAvailable(
-			@RequestParam(value = "username") String username) {
-		if (userService.checkUserByUsername(username) != 0) {
-			return String.valueOf(true);
-		} else {
-			return String.valueOf(false);
-		}
-	}
-	
+
 	@RequestMapping("/findAllUser")
-	public String findAllUser(HttpServletRequest request){
-		List<User> listUser =  userService.findAllUser();
+	public String findAllUser(HttpServletRequest request) {
+		List<User> listUser = userService.findAllUser();
 		request.setAttribute("listUser", listUser);
 		return "/allUser";
 	}

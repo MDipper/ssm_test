@@ -41,31 +41,12 @@ $().ready(function() {
 		rules: {
 		      username: {
 		        required: true,
-		        minlength: 2,
-		        remote: {
-				    url: "user/logincheck_user",     //后台处理程序
-				    type: "get",                //数据发送方式
-				    dataType: "json",           //接受数据格式   
-				    data: {                     //要传递的数据
-				        username: function() {
-				            return $("#username").val();
-				        },
-					    password: function() {
-				            return $("#password").val();
-				        }
-				    }
-		
-				}
+		        minlength: 2,		        
 		      },
 		      password: {
 		        required: true,
 		        minlength: 6
-		      },
-		      confirm_password: {
-		        required: true,
-		        minlength: 6,
-		        equalTo: "#password"
-		      }		      
+		      }      
 		    },
 		    messages: {
 		      username: {
@@ -75,11 +56,6 @@ $().ready(function() {
 		      password: {
 		        required: "请输入密码",
 		        minlength: "密码长度不能小于 6 个字母"
-		      },
-		      confirm_password: {
-		        required: "请输入密码",
-		        minlength: "密码长度不能小于 6 个字母",
-		        equalTo: "两次密码输入不一致"
 		      }
 		    }		
 	});
@@ -107,10 +83,6 @@ $().ready(function() {
 			<p>
 				<label for="cpassword">密码</label>
 				<input id="password" name="password" type="password">
-			</p>
-			<p>
-				<label for="cconfirm_password">确认密码</label>
-				<input id="confirm_password" name="confirm_password" type="password">
 			</p>
 			<p>
 				<input class="reset" type="reset" value="重置">
