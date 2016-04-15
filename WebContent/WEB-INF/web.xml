@@ -58,7 +58,7 @@
 	</filter-mapping>
 
 	<welcome-file-list>
-		<welcome-file>/jsp/register.jsp</welcome-file>
+		<welcome-file></welcome-file>
 	</welcome-file-list>
 	
 	<jsp-config>

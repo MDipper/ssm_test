@@ -15,7 +15,7 @@ $.validator.setDefaults({
 	submitHandler: function() {
 		$.post(
 				// 接收数据的页面
-				'user/login',
+				'login',
 				// 传给后台的数据，多个参数用&连接或者使用json格式数据：{a:'value1',b:'value2'}
 				{
 					username: $("#username").val(),

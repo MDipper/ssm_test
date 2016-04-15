@@ -15,7 +15,7 @@ $.validator.setDefaults({
 	submitHandler: function() {
 		$.post(
 				// 接收数据的页面
-				'user/register',
+				'reg',
 				// 传给后台的数据，多个参数用&连接或者使用json格式数据：{a:'value1',b:'value2'}
 				{
 					username: $("#username").val(),
@@ -44,7 +44,7 @@ $().ready(function() {
 		        required: true,
 		        minlength: 2,
 		        remote: {
-				    url: "user/check_user",     //后台处理程序
+				    url: "check_user",     //后台处理程序
 				    type: "get",                //数据发送方式
 				    dataType: "json",           //接受数据格式   
 				    data: {                     //要传递的数据
