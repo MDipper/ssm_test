@@ -26,15 +26,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
    <table border="1">
 		<tbody>
 			<tr>
-				<th>姓名</th>
-				<th>年龄</th>
+				<th>账号</th>
+				<th>密码</th>
 			</tr>
 			<c:if test="${!empty listUser }">
 				<c:forEach items="${listUser}" var="list">
 					<tr>
 						<td>${list.username }</td>
-						<td>${list.age }</td>
-						
+						<td>${list.password }</td>	
 					</tr>				
 				</c:forEach>
 			</c:if>

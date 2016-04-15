@@ -1,6 +1,7 @@
 package com.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,5 +81,12 @@ public class UserController {
 		} else {
 			return String.valueOf(false);
 		}
+	}
+	
+	@RequestMapping("/findAllUser")
+	public String findAllUser(HttpServletRequest request){
+		List<User> listUser =  userService.findAllUser();
+		request.setAttribute("listUser", listUser);
+		return "/allUser";
 	}
 }

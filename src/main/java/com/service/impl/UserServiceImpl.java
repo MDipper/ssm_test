@@ -1,5 +1,7 @@
 package com.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -34,5 +36,8 @@ public class UserServiceImpl implements UserService {
 	{
 		return userMapper.checkUsernamePassword(user);
 	}
-
+	public List<User> findAllUser()
+	{
+		return userMapper.findAllUser();
+	}
 }

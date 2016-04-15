@@ -18,4 +18,7 @@
 	<select id="checkUsernamePassword" resultType="int" parameterType="User">
 		select count(1) from user WHERE username=#{username} AND password=#{password}
 	</select>
+	<select id="findAllUser" resultMap="userResultMap" resultType="User">
+		select * from user
+	</select>
 </mapper>
