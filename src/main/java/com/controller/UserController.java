@@ -77,4 +77,9 @@ public class UserController {
 		request.setAttribute("listUser", listUser);
 		return "/allUser";
 	}
+	@RequestMapping("/tologin")
+	public String tologin()
+	{
+		return "login";
+	}
 }
