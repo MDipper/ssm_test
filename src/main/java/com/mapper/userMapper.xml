@@ -8,8 +8,8 @@
 		<result property="password" column="password"/>
 	</resultMap>
 	
-	<select id="CheckUserByUsername"  resultType="int" parameterType="java.lang.String">
-	 select count(1) from	user WHERE username=#{username}
+	<select id="checkUserByUsername"  resultType="int" parameterType="java.lang.String">
+	 select count(1) from user WHERE username=#{username}
 	</select>
 
 	<insert id="addUser"   parameterType="User">

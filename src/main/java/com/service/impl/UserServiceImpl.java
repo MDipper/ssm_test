@@ -12,18 +12,22 @@ import com.service.UserService;
 @SuppressWarnings("restriction")
 @Service
 @Transactional
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
 	
 	@Resource
 	public UserMapper userMapper;
+	
+	@Override
 	public int  addUser(User user){
 		// TODO Auto-generated method stub
 		int userid= userMapper.addUser(user);
 		return userid;
 	}
-	public int CheckUserByUsername(String username){
-		int id=userMapper.CheckUserByUsername(username);
-		return id;
+	
+	@Override
+	public int checkUserByUsername(String username) {
+		// TODO Auto-generated method stub
+		return userMapper.checkUserByUsername(username);
 	}
 
 }

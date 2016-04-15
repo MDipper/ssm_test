@@ -6,6 +6,6 @@ import com.model.User;
 
 public interface UserService {
 	
-	int  addUser(User user);
-	int CheckUserByUsername(String username);
+	int addUser(User user);
+	int checkUserByUsername(String username);
 }
